@@ -33,7 +33,6 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
-            /* Links to your uploaded background photo filename */
             background: linear-gradient(rgba(11, 17, 30, 0.75), rgba(11, 17, 30, 0.85)), 
                         url('background.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -150,4 +149,310 @@
             border-radius: 10px;
             font-weight: 700;
             font-size: 0.95rem;
-            cursor:
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 136, 255, 0.35);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-light);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* GRID LAYOUTS */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 4.5rem 0 0.5rem 0;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 0.95rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 0 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 20;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* COUNTDOWN TIMER STYLING */
+        .countdown-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.2rem;
+            text-align: center;
+        }
+
+        .time-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            padding: 0.75rem 0.5rem;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 0.25rem;
+        }
+
+        .time-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+
+        .time-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 0.4rem;
+        }
+
+        /* COMMANDS LIST */
+        .command-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            padding: 0 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 20;
+        }
+
+        .command-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .command-tag {
+            font-family: monospace;
+            font-size: 1rem;
+            color: var(--primary-blue);
+            background: rgba(0, 136, 255, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .command-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .command-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* WIDGET */
+        .widget-box {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .widget-box input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            font-size: 0.95rem;
+            margin: 1rem 0;
+            outline: none;
+        }
+
+        .widget-result {
+            margin-top: 1.2rem;
+            font-weight: 700;
+            min-height: 48px;
+        }
+
+        /* FOOTER & POLICIES */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            margin-top: 5rem;
+            font-size: 0.85rem;
+            background: rgba(11, 17, 30, 0.9);
+            position: relative;
+            z-index: 20;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-light);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            header { padding: 1rem 5%; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FALLING SNOW CANVAS -->
+    <canvas id="snowflake-canvas"></canvas>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Frosty Tunes Logo" class="logo-img" onerror="this.style.display='none'">
+            <span>Frosty Tunes</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#commands">Commands</a></li>
+                <li><a href="#interactive">Interactive</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="overview">
+        <div class="badge">Seasonal Radio Network</div>
+        <h1>Festive Broadcasts For Discord</h1>
+        <p>A dedicated, high-quality holiday radio stream bringing uninterrupted 24/7 festive music straight to your Discord voice channels.</p>
+        <div class="cta-buttons">
+            <a href="https://discord.gg/your-invite-link" target="_blank" class="btn btn-primary">
+                Add to Discord
+            </a>
+            <a href="https://discord.gg/your-invite-link" target="_blank" class="btn btn-secondary">
+                Support Discord
+            </a>
+        </div>
+    </section>
+
+    <!-- STATS & SCHEDULE DASHBOARD -->
+    <section class="dashboard-grid">
+        <!-- COUNTDOWN CARD -->
+        <div class="card">
+            <h3>Christmas Countdown</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem;">Time remaining until Christmas Day</p>
+            <div class="countdown-display">
+                <div class="time-box">
+                    <div class="time-number" id="days">00</div>
+                    <div class="time-label">Days</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-number" id="hours">00</div>
+                    <div class="time-label">Hours</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-number" id="mins">00</div>
+                    <div class="time-label">Mins</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-number" id="secs">00</div>
+                    <div class="time-label">Secs</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BROADCAST SCHEDULE -->
+        <div class="card">
+            <h3>Broadcast Schedule</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Official operational windows</p>
+            <p style="margin-bottom: 0.4rem;"><strong>Winter Broadcast:</strong> Nov 1 – Jan 31</p>
+            <p style="margin-bottom: 0.4rem;"><strong>Mid-Year Event:</strong> July 1 – July 31</p>
+            <p><strong>Audio Stream:</strong> 24/7 AAC Encoding</p>
+        </div>
+
+        <!-- SERVER STATS -->
+        <div class="card">
+            <h3>Network Status</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Live network metrics</p>
+            <div style="font-size: 2rem; font-weight: 800; color: var(--primary-blue);" id="server-count">Active</div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.3rem;">Streaming active across connected communities.</p>
+        </div>
+    </section>
+
+    <!-- COMMANDS SECTION -->
+    <section id="commands">
+        <h2 class="section-title">Command Suite</h2>
+        <p class="section-subtitle">Modern Slash Commands engineered for clarity</p>
+
+        <div class="command-grid">
+            <div class="command-card">
+                <span class="command-tag">/play</span>
+                <h4>Play Stream</h4>
+                <p>Joins your current voice channel and begins streaming live holiday radio.</p>
+            </div>
+            <div class="command-card">
+                <span class="command-tag">/stop</span>
+                <h4>Disconnect</h4>
+                <p>Stops audio playback and cleanly disconnects from the voice channel.</p>
+            </div>
+            <div class="command-card">
+                <span class="command-tag">/about</span>
+                <h4>Information</h4>
+                <p>Displays operational schedules, system health, and official links.</p>
+            </div>
+            <div class="command-card">
+                <span class="command-tag">/list</span>
+                <h4>Naughty or Nice</h4>
+                <p>Evaluates list standing for yourself or a specified server member.</p>
+            </div>
+            <div class="command-card">
+                <span class="command-tag">/cocoa</span>
