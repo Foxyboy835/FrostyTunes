@@ -456,3 +456,144 @@
             </div>
             <div class="command-card">
                 <span class="command-tag">/cocoa</span>
+                <h4>Send Hot Cocoa</h4>
+                <p>Delivers a virtual mug of hot chocolate to another community member.</p>
+            </div>
+            <div class="command-card">
+                <span class="command-tag">/countdown</span>
+                <h4>Days Remaining</h4>
+                <p>Calculates exact days and hours left until Christmas Day.</p>
+            </div>
+            <div class="command-card">
+                <span class="command-tag">/facts</span>
+                <h4>Holiday Trivia</h4>
+                <p>Outputs verified historical facts regarding holiday traditions.</p>
+            </div>
+            <div class="command-card">
+                <span class="command-tag">/ping</span>
+                <h4>Latency Check</h4>
+                <p>Reports API response speed and current host uptime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MINI-GAME -->
+    <section id="interactive" style="padding: 2rem 1rem;">
+        <h2 class="section-title">List Verification</h2>
+        <p class="section-subtitle">Web preview of the /list command engine</p>
+        
+        <div class="card widget-box">
+            <input type="text" id="username" placeholder="Enter username...">
+            <button class="btn btn-primary" onclick="checkList()" style="width: 100%;">
+                Evaluate User
+            </button>
+            <div class="widget-result" id="result"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Frosty Tunes. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="terms.html">Terms of Service</a>
+            <span>&bull;</span>
+            <a href="privacy.html">Privacy Policy</a>
+            <span>&bull;</span>
+            <a href="https://discord.gg/your-invite-link" target="_blank">Support</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR SNOW, COUNTDOWN, AND WIDGET -->
+    <script>
+        // --- 1. FALLING SNOW EFFECT ---
+        const canvas = document.getElementById('snowflake-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const flakes = Array.from({ length: 60 }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 2.5 + 1,
+            density: Math.random() * 0.5 + 0.5,
+            opacity: Math.random() * 0.5 + 0.3
+        }));
+
+        function drawSnow() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+
+            flakes.forEach(flake => {
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                flake.y += flake.density;
+                flake.x += Math.sin(flake.y / 30) * 0.5;
+
+                if (flake.y > height) {
+                    flake.y = -10;
+                    flake.x = Math.random() * width;
+                }
+            });
+
+            requestAnimationFrame(drawSnow);
+        }
+        drawSnow();
+
+        // --- 2. LIVE CHRISTMAS COUNTDOWN ---
+        function updateCountdown() {
+            const now = new Date();
+            let currentYear = now.getFullYear();
+            let christmas = new Date(`December 25, ${currentYear} 00:00:00 EST`);
+
+            if (now > christmas) {
+                christmas = new Date(`December 25, ${currentYear + 1} 00:00:00 EST`);
+            }
+
+            const diff = christmas - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / 1000 / 60) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('mins').innerText = String(mins).padStart(2, '0');
+            document.getElementById('secs').innerText = String(secs).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- 3. INTERACTIVE WIDGET ---
+        function checkList() {
+            const name = document.getElementById('username').value.trim();
+            const result = document.getElementById('result');
+
+            if (!name) {
+                result.innerHTML = '<span style="color: var(--text-muted);">Please enter a username.</span>';
+                return;
+            }
+
+            let hash = 0;
+            for (let i = 0; i < name.length; i++) {
+                hash = name.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            const percentage = Math.abs(hash % 101);
+
+            if (percentage >= 50) {
+                result.innerHTML = `<span style="color: var(--accent-green);">${name} is ${percentage}% Nice</span><br><small style="color: var(--text-muted);">Status: Approved for Nice List</small>`;
+            } else {
+                result.innerHTML = `<span style="color: var(--accent-red);">${name} is ${percentage}% Naughty</span><br><small style="color: var(--text-muted);">Status: Assigned to Naughty List</small>`;
+            }
+        }
+    </script>
+</body>
+</html>
